@@ -1,0 +1,19 @@
+# CustoMusic Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core audio playback
+pygame>=2.1.0
+
+# Audio metadata reading and writing
+mutagen>=1.45.0
+
+# Optional: Enhanced audio format support
+# Uncomment if you need additional codec support
+# pydub>=0.25.0
+# python-vlc>=3.0.0
+
+# Development dependencies (optional)
+# Uncomment for development work
+# pytest>=7.0.0
+# black>=22.0.0
+# flake8>=4.0.0

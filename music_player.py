@@ -18,7 +18,7 @@ class MusicPlayerEngine:
         
         # Player state
         self.current_track = None
-        self.is_loaded = False
+        self.is_loaded_flag = False
         self.is_playing = False
         self.is_paused = False
         self.position = 0.0
@@ -36,7 +36,7 @@ class MusicPlayerEngine:
         self.on_error = None
         
         # Supported formats
-        self.supported_formats = {'.mp3', '.wav', '.ogg', '.flac', '.aiff', '.wma'}
+        self.supported_formats = {'.mp3', '.wav', '.ogg', '.flac', '.aiff', '.wma', '.agg'}
         
         # Start position tracking thread
         self.start_position_tracking()
@@ -63,7 +63,7 @@ class MusicPlayerEngine:
             pygame.mixer.music.load(str(track_path))
             
             self.current_track = str(track_path)
-            self.is_loaded = True
+            self.is_loaded_flag = True
             self.position = 0.0
             
             # Try to get duration (this is approximate for some formats)
@@ -81,7 +81,7 @@ class MusicPlayerEngine:
     def play(self):
         """Start playback"""
         try:
-            if not self.is_loaded:
+            if not self.is_loaded_flag:
                 return False
             
             if self.is_paused:
@@ -144,7 +144,7 @@ class MusicPlayerEngine:
     def set_position(self, position):
         """Set playback position in seconds"""
         try:
-            if not self.is_loaded:
+            if not self.is_loaded_flag:
                 return False
             
             # pygame.mixer.music doesn't support seeking directly
@@ -177,7 +177,7 @@ class MusicPlayerEngine:
     
     def is_loaded(self):
         """Check if a track is loaded"""
-        return self.is_loaded
+        return self.is_loaded_flag
     
     def is_playing_status(self):
         """Check if currently playing"""

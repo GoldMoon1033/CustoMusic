@@ -1,253 +1,303 @@
 # 🎵 CustoMusic
 
-A feature-rich music player with intelligent playlist management, customizable UI, and comprehensive playback controls. Built with Python and tkinter for cross-platform compatibility.
+A comprehensive music player with intelligent playlist management, customizable UI, and advanced playback controls. Built with Python for cross-platform compatibility and ease of use.
+
+![Python Version](https://img.shields.io/badge/Python-3.7+-blue.svg)
+![Platform](https://img.shields.io/badge/Platform-Windows%20|%20Linux%20|%20macOS-green.svg)
+![License](https://img.shields.io/badge/License-MIT-red.svg)
 
 ## ✨ Key Features
 
 ### 🎶 Smart Playlist Management
-- **Folder-based playlists** - Create playlists by organizing music into folders
+- **Folder-based playlists** - Organize music into folders for automatic playlist creation
 - **Custom naming & ordering** - Use descriptor files for personalized playlist and track names
 - **Auto-initialization** - Descriptor files created automatically on first run
-- **Multiple format support** - FLAC, WAV, WMA, OGG, AGG, MP3, AIFF
+- **Format support** - FLAC, WAV, WMA, OGG, AGG, MP3, AIFF
 
 ### 🎛️ Advanced Playback Controls
-- **Variable playback speed** - 0.5x to 2.0x speed control
+- **Variable playback speed** - 0.5x to 2.0x speed control with live adjustment
 - **Rewind functionality** - Jump back 10 seconds instantly
 - **Multiple loop modes** - Single track, playlist, or no looping
 - **Shuffle mode** - Randomized track playback
 - **Precise seeking** - Click progress bar to jump to any position
+- **Forward-only timer** - Clean time display format
 
 ### 🎨 Customizable Interface
-- **Hex color themes** - Fully customizable color schemes
-- **Preset themes** - 7 built-in color themes (Dark, Ocean, Forest, etc.)
-- **Collapsible sections** - Hide playlist or track panels to save space
+- **HEX color themes** - Full customization with hex color picker
+- **7 preset themes** - Dark, Ocean, Forest, Sunset, Purple, Monochrome
+- **Collapsible sections** - Hide playlist or track panels with toggle buttons
 - **Scalable UI** - Responsive design that adapts to window resizing
-- **Scrollable lists** - No content overflow, smooth scrolling with mouse wheel
+- **Scrollable lists** - Proper scrollbars, no content overflow
+- **Minimalistic design** - Clean, distraction-free interface
 
-### 🔧 Advanced Features
-- **Session persistence** - Remembers last played track and position
-- **Metadata support** - Displays track information when available
-- **Export playlists** - Save to M3U or PLS formats
-- **Settings management** - Comprehensive configuration system
+## 🚀 Quick Start
 
-## 📋 Requirements
-
-### Dependencies
+### One-Command Installation
 ```bash
+python run.py --setup
+```
+
+### Manual Installation
+```bash
+# Install dependencies
 pip install pygame mutagen
-```
 
-### System Requirements
-- Python 3.7 or higher
-- Audio output device
-- At least 100MB free disk space
-
-## 🚀 Installation & Setup
-
-### 1. Clone or Download
-```bash
-git clone https://github.com/GoldMoon1033/CustoMusic.git
-cd CustoMusic
-```
-
-### 2. Install Dependencies
-```bash
-pip install pygame mutagen
-```
-
-### 3. Run the Application
-```bash
+# Run the application
 python main.py
 ```
 
-## 📁 Project Structure
+## 📁 Complete Project Structure
 
 ```
 CustoMusic/
-├── main.py                 # Main application and UI
-├── music_player.py         # Audio playback engine
-├── playlist_manager.py     # Playlist and file management
-├── settings_manager.py     # Configuration and themes
-├── ui_components.py        # Custom UI components
-├── playlists/             # Playlist folders (auto-created)
-│   ├── Rock Music/        # Example playlist folder
-│   │   ├── song1.mp3
-│   │   ├── song2.flac
-│   │   └── playlist.json  # Auto-generated descriptor
-│   └── Classical/
-│       ├── piece1.wav
-│       └── playlist.json
-└── README.md              # This documentation
+├── main.py                 # Main application and GUI
+├── music_player.py         # Audio playback engine (pygame)
+├── playlist_manager.py     # Playlist and descriptor management
+├── settings_manager.py     # Configuration and theme system
+├── ui_components.py        # Custom scrollable UI components
+├── utils.py               # Playlist utilities and tools
+├── setup.py               # Automated setup and installation
+├── run.py                 # Smart launcher with checks
+├── requirements.txt       # Project dependencies
+├── README.md             # This documentation
+└── playlists/            # Your music playlists (auto-created)
+    ├── Rock Music/
+    │   ├── song1.mp3
+    │   ├── song2.flac
+    │   └── playlist.json  # Auto-generated descriptor
+    ├── Classical/
+    │   ├── piece1.wav
+    │   └── playlist.json
+    └── Favorites/
+        └── playlist.json
 ```
 
-## 📖 How to Use
+## 📖 Usage Guide
+
+### Getting Started
+1. **Run setup**: `python run.py --setup` (first time only)
+2. **Add music**: Create folders in `playlists/` and add your music files
+3. **Launch player**: `python run.py` or `python main.py`
+4. **Enjoy**: Select playlists and tracks, customize as needed!
 
 ### Creating Playlists
-1. **Create folders** in the `playlists` directory
-2. **Add music files** to each folder
-3. **Run the application** - descriptor files are created automatically
-4. **Customize names** by editing `playlist.json` files (optional)
+1. **Create folder** in `playlists/` directory (e.g., "My Rock Music")
+2. **Add music files** - drag and drop your audio files
+3. **Launch app** - descriptor files are auto-generated
+4. **Customize** (optional) - edit `playlist.json` for custom names
 
 ### Playlist Descriptor Format
 ```json
 {
-  "display_name": "My Rock Collection",
-  "description": "Best rock songs of all time",
+  "display_name": "🎸 My Rock Collection",
+  "description": "The best rock songs of all time",
+  "created": "2024-01-01T12:00:00",
   "tracks": {
     "song1.mp3": {
-      "display_name": "Awesome Rock Song",
-      "order": 1
+      "display_name": "Epic Rock Anthem",
+      "order": 1,
+      "added": "2024-01-01T12:00:00"
     },
     "song2.flac": {
-      "display_name": "Another Great Track",
-      "order": 2
+      "display_name": "Guitar Masterpiece",
+      "order": 2,
+      "added": "2024-01-01T12:05:00"
     }
   }
 }
 ```
 
-### Basic Playback
-1. **Select playlist** from left panel
-2. **Double-click track** to start playing
-3. **Use controls** - play/pause, next/previous, volume
-4. **Adjust speed** - Use speed slider for faster/slower playback
-
 ### Advanced Controls
+- **Speed Control**: Adjust playback from 0.5x to 2.0x speed
 - **Rewind**: ⏪ button jumps back 10 seconds
-- **Shuffle**: 🔀 button enables random track order
-- **Loop Playlist**: 🔁 button repeats entire playlist
-- **Loop Single**: 🔂 button repeats current track
-- **Seeking**: Click progress bar to jump to position
+- **Loop Modes**: 🔁 playlist loop, 🔂 single track loop
+- **Shuffle**: 🔀 randomize track order
+- **Seeking**: Click anywhere on progress bar
+- **Volume**: Smooth volume slider with visual feedback
 
-### Customizing Colors
-1. **Go to Settings** - File → Settings
-2. **Choose colors** - Pick primary and secondary colors
-3. **Use presets** - Apply built-in themes
-4. **Reset if needed** - Return to default colors
+## 🛠️ Utilities & Tools
 
-## 🎨 Color Themes
+### Built-in Utilities
+```bash
+# Analyze your music collection
+python utils.py analyze
 
-### Built-in Presets
-- **Default** - Classic blue and gray
-- **Dark** - Dark mode with orange accents
-- **Ocean** - Blue tones with teal accents
-- **Forest** - Green theme with warm highlights
-- **Sunset** - Orange and red color scheme
-- **Purple** - Purple theme with pink accents
-- **Monochrome** - Grayscale professional look
+# Import music from existing folders
+python utils.py import /path/to/music --by-artist
 
-### Custom Colors
-- Use hex format: `#4a90e2` (blue), `#e74c3c` (red)
-- Colors apply to buttons, highlights, and accents
-- Settings saved automatically
+# Backup your playlists
+python utils.py backup
 
-## ⚙️ Configuration
+# Clean up empty playlists
+python utils.py clean
 
-### Settings File Location
-- **Windows**: `%USERPROFILE%\.music_player\settings.json`
-- **Linux/macOS**: `~/.music_player/settings.json`
-
-### Key Settings
-```json
-{
-  "primary_color": "#4a90e2",
-  "secondary_color": "#2c3e50",
-  "default_volume": 70,
-  "remember_position": true,
-  "auto_advance": true,
-  "window_width": 1000,
-  "window_height": 700
-}
+# Check system requirements
+python run.py --check
 ```
 
-## 🔧 Supported Audio Formats
+### Playlist Management
+- **Auto-organization** by artist or folder structure
+- **Bulk import** from existing music directories
+- **Backup/restore** functionality for playlist safety
+- **Analysis tools** for collection statistics
 
-| Format | Extension | Quality | Notes |
-|--------|-----------|---------|-------|
-| MP3 | `.mp3` | Lossy | Most common format |
-| FLAC | `.flac` | Lossless | High quality, larger files |
-| WAV | `.wav` | Lossless | Uncompressed audio |
-| OGG | `.ogg` | Lossy | Open source format |
-| WMA | `.wma` | Lossy | Windows Media Audio |
-| AIFF | `.aiff` | Lossless | Apple format |
-| AGG | `.agg` | Varies | Audio container format |
+## 🎨 Customization
+
+### Color Themes
+Access via **File → Settings**:
+
+- **Default** - Professional blue (#4a90e2) and gray (#2c3e50)
+- **Dark** - Dark theme (#34495e) with orange accents (#e67e22)
+- **Ocean** - Blue tones (#3498db) with teal highlights (#1abc9c)
+- **Forest** - Green theme (#27ae60) with warm accents (#f39c12)
+- **Sunset** - Orange/red scheme (#e67e22, #e74c3c)
+- **Purple** - Purple theme (#9b59b6) with pink accents (#e91e63)
+- **Monochrome** - Professional grayscale (#5d6d7e, #95a5a6)
+
+### Custom Colors
+- Use hex format: `#ff5733` (red-orange), `#33ff57` (green)
+- Colors apply to buttons, progress bars, and highlights
+- Live preview of color changes
+- Reset to defaults option available
+
+### UI Customization
+- **Collapsible panels** - Hide playlists or tracks with − buttons
+- **Resizable window** - Drag to resize, UI adapts automatically
+- **Scrollable lists** - Mouse wheel support, proper scrollbars
+- **Minimalistic design** - Clean layout without clutter
+
+## 🔧 Technical Details
+
+### Supported Audio Formats
+
+| Format | Extension | Quality | Metadata | Notes |
+|--------|-----------|---------|----------|--------|
+| MP3 | `.mp3` | Lossy | ✅ | Most common, good compatibility |
+| FLAC | `.flac` | Lossless | ✅ | High quality, larger files |
+| WAV | `.wav` | Lossless | ❌ | Uncompressed, very large |
+| OGG | `.ogg` | Lossy | ✅ | Open source alternative |
+| WMA | `.wma` | Lossy | ✅ | Windows Media Audio |
+| AIFF | `.aiff` | Lossless | ✅ | Apple audio format |
+| AGG | `.agg` | Varies | ✅ | Audio container format |
+
+### System Requirements
+- **Python 3.7+** (automatically checked)
+- **pygame 2.1.0+** for audio playback
+- **mutagen 1.45.0+** for metadata reading
+- **50-100MB RAM** during operation
+- **Audio output device** with working drivers
+
+### Performance Features
+- **Efficient memory usage** - Only current track loaded
+- **Background processing** - Non-blocking UI
+- **Lazy loading** - Playlists loaded on demand
+- **Smart caching** - Settings and metadata cached
+- **Multi-threading** - Responsive interface during playback
 
 ## 🐛 Troubleshooting
 
-### Common Issues
+### Installation Issues
+```bash
+# Check what's missing
+python run.py --check
+
+# Run complete setup
+python run.py --setup
+
+# Manual dependency install
+pip install pygame mutagen
+```
+
+### Common Problems
 
 **"No audio output"**
-- Check system audio settings
-- Verify audio files are not corrupted
-- Restart the application
+- Check system volume and audio device
+- Verify pygame installation: `python -c "import pygame"`
+- Test with different audio files
 
-**"Playlist not showing"**
-- Ensure folders exist in `playlists` directory
-- Check file permissions
-- Refresh playlists (File → Refresh Playlists)
+**"Playlists not showing"**
+- Check `playlists/` folder exists and contains subfolders
+- Verify music files have supported extensions
+- Try **File → Refresh Playlists**
 
-**"Playback stuttering"**
-- Close other audio applications
-- Reduce playback speed if needed
-- Check available system resources
+**"UI elements not responding"**
+- Close and restart the application
+- Check if window is properly focused
+- Try resizing the window
 
 **"Colors not applying"**
 - Restart application after color changes
-- Check if hex colors are valid format
-- Reset to defaults if issues persist
+- Ensure hex colors are valid (e.g., #ff0000)
+- Use **Reset to Defaults** if needed
 
-### Debug Information
-- Check `~/.music_player/` for log files
-- Settings are backed up on corruption
-- Descriptor files can be manually edited
+### Debug Mode
+Set environment variable for detailed logging:
+```bash
+# Windows
+set DEBUG=1 && python main.py
 
-## ⚡ Performance
+# Linux/macOS  
+DEBUG=1 python main.py
+```
 
-### Optimization Features
-- **Efficient memory usage** - Only loads current track
-- **Background threading** - UI remains responsive during playback
-- **Lazy loading** - Playlists loaded on demand
-- **Caching** - Settings and metadata cached for speed
+## 💡 Tips & Tricks
 
-### System Resources
-- **Memory**: 50-100MB typical usage
-- **CPU**: 1-5% during playback
-- **Storage**: Settings and cache under 1MB
+### Organization Tips
+- Create themed playlists: "Workout", "Study", "Party"
+- Use emoji in display names: "🎸 Rock", "🎼 Classical"
+- Keep playlists under 100 tracks for best performance
+- Use descriptive folder names - they become playlist names
+
+### Playback Tips
+- Use speed control for language learning (0.8x)
+- Rewind function perfect for music practice
+- Single loop great for learning new songs
+- Shuffle mode for discovering forgotten tracks
+
+### Customization Tips
+- Dark theme reduces eye strain
+- Collapse unused panels for more space
+- Adjust window size for your screen
+- Export playlists to share with friends
 
 ## 🤝 Contributing
 
 ### Development Setup
-1. Fork the repository
-2. Install development dependencies: `pip install pygame mutagen`
-3. Make changes and test thoroughly
-4. Submit pull request with clear description
+```bash
+git clone https://github.com/GoldMoon1033/CustoMusic.git
+cd CustoMusic
+pip install -r requirements.txt
+python run.py --check
+```
 
-### Areas for Enhancement
-- **Additional formats** - Support for more audio codecs
-- **Visualizations** - Audio spectrum display
-- **Network features** - Internet radio support
+### Architecture Overview
+- **main.py** - GUI application using tkinter
+- **music_player.py** - Audio engine with pygame backend
+- **playlist_manager.py** - File system and JSON descriptor management
+- **settings_manager.py** - Configuration persistence and themes
+- **ui_components.py** - Custom widgets (scrollable frames, buttons)
+
+### Enhancement Ideas
+- **Equalizer** - Audio frequency adjustment
+- **Visualizations** - Spectrum analyzer display
+- **Internet radio** - Stream online stations
 - **Plugin system** - Extensible architecture
-- **Mobile support** - Touch-friendly interface
+- **Mobile app** - Companion mobile interface
+- **Cloud sync** - Cross-device playlist sync
 
 ## 📄 License
 
-MIT License - Free to use, modify, and distribute.
-
-## 🎯 Technical Architecture
-
-### Core Components
-- **main.py** - Application UI and user interaction management
-- **music_player.py** - Audio engine using pygame for playback control
-- **playlist_manager.py** - File system integration and descriptor management
-- **settings_manager.py** - Configuration persistence and theme management
-- **ui_components.py** - Custom widgets for enhanced user interface
-
-### Design Principles
-- **Modular architecture** - Separated concerns for maintainability
-- **Event-driven** - Callback system for component communication
-- **Cross-platform** - Pure Python implementation for compatibility
-- **User-centric** - Intuitive interface with advanced customization
+MIT License - Free to use, modify, and distribute for any purpose.
 
 ---
 
-**Perfect for**: Music enthusiasts who want control over their listening experience with a clean, customizable interface that respects their organizational preferences.
+## 🎯 Perfect For
+
+- **Music enthusiasts** who want full control over their listening experience
+- **Audiophiles** who need support for lossless formats like FLAC
+- **Organizers** who prefer folder-based playlist management
+- **Customizers** who want personalized themes and layouts
+- **Students** who need speed control for educational audio
+- **Anyone** who wants a clean, distraction-free music player
+
+**Ready to revolutionize your music listening experience? Get started with `python run.py --setup`!** 🎵
